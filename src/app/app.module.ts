@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms'; // Donne acces a ngModel
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   // Ce que j'ai déclaré dans les autres sous-modules
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent
   ],
   // Ce qu'il faut importer depuis les internets
   imports: [

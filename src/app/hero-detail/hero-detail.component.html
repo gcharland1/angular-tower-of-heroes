@@ -1,0 +1,9 @@
+<!-- Si hero existe -->
+<div class="hero-card" *ngIf="hero">
+  <h2><span class="hero-name">{{ hero.name | uppercase }}</span> Details</h2>
+  <div><span>id: </span>{{ hero.id }}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+</div>

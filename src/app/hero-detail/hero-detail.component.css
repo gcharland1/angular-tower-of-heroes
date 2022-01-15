@@ -1,0 +1,11 @@
+.hero-card {
+  border-style: solid;
+  border-radius: 1em;
+  padding: 1em;
+
+  background-color: #E0E0E0;
+}
+
+.hero-name {
+  font-weight: bold;
+}
