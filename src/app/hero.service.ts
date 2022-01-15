@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,15 @@ import { HEROES } from './mock-heroes';
  */
 export class HeroService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
-    /* Plutôt que de lire directement la liste HEROES
-     * dans mock-heroes.ts, il "observe" le lien qu'on
-     * lui fournit. Ça va être facilement traduisible
-     * quand nos héroes vont être enregistrés dans une
-     * DB sur un serveur externe.
-     */
     const heroes = of(HEROES);
+    this.messageService.add('HeroService: fetched heroes');
     return heroes;
+  }
+
+  addMessage(message: string): void {
+    this.messageService.add(message);
   }
 }
