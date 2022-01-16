@@ -8,12 +8,7 @@ import { MessageService } from './message.service';
 @Injectable({
   providedIn: 'root'
 })
-/*
- * en injectant le service dans root, Angular
- * crée une seule instance du service et
- * l'injecte automatiquement dans les classes
- * qui en font appel.
- */
+
 export class HeroService {
 
   constructor(private messageService: MessageService) { }
@@ -22,6 +17,17 @@ export class HeroService {
     const heroes = of(HEROES);
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
+  }
+
+  getHero(id: Number): Observable<Hero> {
+    const hero = HEROES.find(h => h.id == id)!;
+    // Le ! à la fin renvoie <undefined> s'il n'y a pas de hero
+    if (typeof hero == typeof new Observable<Hero>()) {
+      this.messageService.add(`HeroService: fetched hero id=${id}`);
+    } else {
+      this.messageService.add(`No hero with id=${id}`);
+    }
+    return of(hero);
   }
 
   addMessage(message: string): void {
