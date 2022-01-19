@@ -11,6 +11,7 @@ import { HeroService } from '../hero.service';
 
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
+  searchResults: Hero[] = [];
 
   constructor(private heroService: HeroService) {
     this.getHeroes();
@@ -22,5 +23,4 @@ export class DashboardComponent implements OnInit {
   getHeroes() {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.slice(0, 4));
   }
-
 }
